@@ -18,6 +18,8 @@ import RemoteDiagnosticModule from './components/RemoteDiagnosticModule';
 import SubscriptionPlans from './components/SubscriptionPlans';
 import SalesFunnelModule from './components/SalesFunnelModule';
 import PaymentMethodsAnalysis from './components/PaymentMethodsAnalysis';
+import AdvancedChatBot from './components/AdvancedChatBot';
+import KnowledgeBase from './components/KnowledgeBase';
 
 function App() {
   return (
@@ -37,10 +39,11 @@ function App() {
       <RemoteDiagnosticModule />
       <SalesFunnelModule />
       <PaymentMethodsAnalysis />
+      <KnowledgeBase />
       <NewsSection />
       <ContactSection />
       <Footer />
-      <ChatBot />
+      <AdvancedChatBot />
       <VoiceRecorder />
       <AIAvatar />
     </div>
