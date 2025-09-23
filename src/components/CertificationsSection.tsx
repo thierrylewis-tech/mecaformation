@@ -4,20 +4,6 @@ import { Award, Shield, CheckCircle, Star, Users, Trophy, Target, Zap } from 'lu
 const CertificationsSection = () => {
   const certifications = [
     {
-      icon: Shield,
-      title: "Formations Éligibles CPF",
-      description: "Toutes nos formations sont éligibles au Compte Personnel de Formation",
-      badge: "CPF",
-      color: "bg-green-100 text-green-700"
-    },
-    {
-      icon: Trophy,
-      title: "Partenaire Constructeurs",
-      description: "Partenariats officiels avec PSA, Renault, Volkswagen, BMW",
-      badge: "Premium",
-      color: "bg-purple-100 text-purple-700"
-    },
-    {
       icon: Target,
       title: "Habilitations Électriques",
       description: "Formations habilitantes B0L, B1VL, B2VL pour véhicules électriques",
@@ -91,7 +77,8 @@ const CertificationsSection = () => {
         </div>
 
         {/* Certifications Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="flex justify-center mb-16">
+          <div className="max-w-md">
           {certifications.map((cert, index) => {
             const IconComponent = cert.icon;
             return (
@@ -137,6 +124,7 @@ const CertificationsSection = () => {
               );
             })}
           </div>
+          </div>
         </div>
 
         {/* Recognition Awards */}
@@ -169,11 +157,11 @@ const CertificationsSection = () => {
             </div>
             <div className="flex items-center space-x-2">
               <CheckCircle className="h-5 w-5 text-green-500" />
-              <span className="text-sm font-medium text-slate-700">Éligible CPF</span>
+              <span className="text-sm font-medium text-slate-700">Habilitation Électrique</span>
             </div>
             <div className="flex items-center space-x-2">
               <CheckCircle className="h-5 w-5 text-green-500" />
-              <span className="text-sm font-medium text-slate-700">Partenaire Officiel</span>
+              <span className="text-sm font-medium text-slate-700">Formation Sécurisée</span>
             </div>
             <div className="flex items-center space-x-2">
               <CheckCircle className="h-5 w-5 text-green-500" />
