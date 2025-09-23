@@ -17,6 +17,7 @@ import DIYRepairModule from './components/DIYRepairModule';
 import RemoteDiagnosticModule from './components/RemoteDiagnosticModule';
 import SubscriptionPlans from './components/SubscriptionPlans';
 import SalesFunnelModule from './components/SalesFunnelModule';
+import PaymentMethodsAnalysis from './components/PaymentMethodsAnalysis';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
       <DIYRepairModule />
       <RemoteDiagnosticModule />
       <SalesFunnelModule />
+      <PaymentMethodsAnalysis />
       <NewsSection />
       <ContactSection />
       <Footer />
