@@ -72,74 +72,121 @@ const KnowledgeBase = () => {
   const loadKnowledgeBase = async () => {
     setLoading(true);
     try {
-      const promises = [];
-      
-      // Charger contenu automobile
-      if (selectedType === 'all' || selectedType === 'automotive') {
-        let automotiveQuery = supabase.from('automotive_knowledge').select('*');
-        
-        if (searchTerm) {
-          automotiveQuery = automotiveQuery.ilike('title', `%${searchTerm}%`);
+      // Données de démonstration en attendant la configuration Supabase
+      const mockAutomotiveData: KnowledgeItem[] = [
+        {
+          id: '1',
+          title: 'Diagnostic des Véhicules Électriques',
+          category: 'moteur_electrique',
+          subcategory: 'Batteries et Moteurs',
+          content: 'Guide complet pour diagnostiquer les pannes sur véhicules électriques. Couvre les systèmes de batteries, moteurs électriques, chargeurs embarqués et systèmes de refroidissement.',
+          type: 'automotive',
+          difficulty_level: 4,
+          duration_minutes: 45,
+          views_count: 1250,
+          rating: 4.8,
+          keywords: ['diagnostic', 'électrique', 'batterie', 'moteur']
+        },
+        {
+          id: '2',
+          title: 'Systèmes Hybrides Toyota',
+          category: 'hybride',
+          subcategory: 'Architecture Hybride',
+          content: 'Comprendre le fonctionnement des systèmes hybrides Toyota HSD (Hybrid Synergy Drive). Analyse des composants, stratégies de contrôle et procédures de maintenance.',
+          type: 'automotive',
+          difficulty_level: 3,
+          duration_minutes: 60,
+          views_count: 890,
+          rating: 4.6,
+          keywords: ['hybride', 'toyota', 'HSD', 'maintenance']
+        },
+        {
+          id: '3',
+          title: 'Codes Défauts ADAS',
+          category: 'adas',
+          subcategory: 'Systèmes d\'Aide à la Conduite',
+          content: 'Diagnostic et réparation des systèmes ADAS. Calibrage des caméras, radars, capteurs de stationnement et systèmes de freinage d\'urgence.',
+          type: 'automotive',
+          difficulty_level: 5,
+          duration_minutes: 90,
+          views_count: 567,
+          rating: 4.9,
+          keywords: ['ADAS', 'calibrage', 'radar', 'caméra']
         }
-        
-        if (selectedCategory !== 'all' && !['mathematiques', 'francais', 'anglais'].includes(selectedCategory)) {
-          automotiveQuery = automotiveQuery.eq('category', selectedCategory);
+      ];
+
+      const mockEducationData: KnowledgeItem[] = [
+        {
+          id: '4',
+          title: 'Mathématiques Appliquées à l\'Automobile',
+          category: 'mathematiques',
+          content: 'Calculs de puissance, couple, rendement et consommation. Formules essentielles pour comprendre les performances automobiles.',
+          type: 'education',
+          difficulty_level: 2,
+          duration_minutes: 30,
+          views_count: 445,
+          rating: 4.3,
+          keywords: ['mathématiques', 'puissance', 'couple', 'rendement'],
+          level: 'CAP',
+          subject: 'mathematiques'
+        },
+        {
+          id: '5',
+          title: 'Communication Client en Atelier',
+          category: 'francais',
+          content: 'Techniques de communication avec la clientèle. Rédaction de devis, explications techniques vulgarisées et gestion des réclamations.',
+          type: 'education',
+          difficulty_level: 2,
+          duration_minutes: 25,
+          views_count: 332,
+          rating: 4.4,
+          keywords: ['communication', 'client', 'devis', 'réclamation'],
+          level: 'BAC_PRO',
+          subject: 'francais'
+        },
+        {
+          id: '6',
+          title: 'Anglais Technique Automobile',
+          category: 'anglais',
+          content: 'Vocabulaire technique automobile en anglais. Documentation constructeur, codes défauts internationaux et communication technique.',
+          type: 'education',
+          difficulty_level: 3,
+          duration_minutes: 40,
+          views_count: 278,
+          rating: 4.2,
+          keywords: ['anglais', 'technique', 'vocabulaire', 'documentation'],
+          level: 'BTS',
+          subject: 'anglais'
         }
-        
-        promises.push(automotiveQuery.limit(20));
-      }
-      
-      // Charger contenu enseignement général
-      if (selectedType === 'all' || selectedType === 'education') {
-        let educationQuery = supabase.from('general_education').select('*');
-        
-        if (searchTerm) {
-          educationQuery = educationQuery.ilike('title', `%${searchTerm}%`);
-        }
-        
-        if (['mathematiques', 'francais', 'anglais'].includes(selectedCategory)) {
-          educationQuery = educationQuery.eq('subject', selectedCategory);
-        }
-        
-        if (selectedLevel !== 'all') {
-          educationQuery = educationQuery.eq('level', selectedLevel);
-        }
-        
-        promises.push(educationQuery.limit(20));
+      ];
+
+      // Filtrer selon les critères sélectionnés
+      let filteredItems = [...mockAutomotiveData, ...mockEducationData];
+
+      if (selectedType !== 'all') {
+        filteredItems = filteredItems.filter(item => item.type === selectedType);
       }
 
-      const results = await Promise.all(promises);
-      const allItems: KnowledgeItem[] = [];
-
-      // Traiter résultats automobile
-      if (results[0]) {
-        const automotiveData = results[0].data as AutomotiveKnowledge[];
-        if (automotiveData) {
-          allItems.push(...automotiveData.map(item => ({
-            ...item,
-            type: 'automotive' as const
-          })));
-        }
+      if (selectedCategory !== 'all') {
+        filteredItems = filteredItems.filter(item => item.category === selectedCategory);
       }
 
-      // Traiter résultats éducation
-      const educationIndex = selectedType === 'automotive' ? 0 : results.length > 1 ? 1 : 0;
-      if (results[educationIndex] && selectedType !== 'automotive') {
-        const educationData = results[educationIndex].data as GeneralEducation[];
-        if (educationData) {
-          allItems.push(...educationData.map(item => ({
-            ...item,
-            type: 'education' as const,
-            category: item.subject,
-            views_count: 0,
-            rating: 4.5
-          })));
-        }
+      if (selectedLevel !== 'all') {
+        filteredItems = filteredItems.filter(item => item.level === selectedLevel);
       }
 
-      setKnowledgeItems(allItems);
+      if (searchTerm) {
+        filteredItems = filteredItems.filter(item => 
+          item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          item.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          item.keywords.some(keyword => keyword.toLowerCase().includes(searchTerm.toLowerCase()))
+        );
+      }
+
+      setKnowledgeItems(filteredItems);
     } catch (error) {
       console.error('Erreur chargement base de connaissances:', error);
+      setKnowledgeItems([]);
     } finally {
       setLoading(false);
     }
