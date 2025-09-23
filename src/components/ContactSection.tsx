@@ -72,13 +72,14 @@ const ContactSection = () => {
             <Phone className="h-4 w-4 mr-2" />
             Contactez-nous
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6 text-responsive">
             Une Question ?
             <span className="text-orange-500"> Parlons-en !</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Nos conseillers pédagogiques sont là pour vous accompagner dans votre projet de formation. 
-            N'hésitez pas à nous contacter pour obtenir toutes les informations dont vous avez besoin.
+            Nos <strong>conseillers pédagogiques experts</strong> sont disponibles <em>24h/7j sur WhatsApp</em> 
+            pour vous accompagner dans votre projet de formation. <strong>Réponse garantie sous 2h</strong> 
+            pour toutes vos questions sur nos formations, financements et débouchés professionnels.
           </p>
         </div>
 

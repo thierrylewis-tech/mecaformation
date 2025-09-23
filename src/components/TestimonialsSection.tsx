@@ -68,13 +68,14 @@ const TestimonialsSection = () => {
             <Star className="h-4 w-4 mr-2" />
             Témoignages étudiants
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6 text-responsive">
             Ils ont Réussi
             <span className="text-orange-500"> Leur Carrière</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Découvrez les parcours inspirants de nos anciens étudiants qui ont transformé 
-            leur passion pour la mécanique en une carrière épanouissante.
+            Découvrez les <strong>parcours inspirants de nos anciens étudiants</strong> qui ont transformé 
+            leur passion pour la mécanique en une <em>carrière épanouissante et bien rémunérée</em>. 
+            <strong>95% de nos diplômés recommandent notre formation</strong> à leurs proches.
           </p>
         </div>
 

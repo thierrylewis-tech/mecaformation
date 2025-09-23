@@ -228,13 +228,15 @@ const FormationsSection = () => {
             <Award className="h-4 w-4 mr-2" />
             Formations certifiées
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6 text-responsive">
             Nos Formations en
             <span className="text-orange-500"> Mécanique Automobile</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Découvrez notre catalogue complet de formations, du CAP au Bac Pro, 
-            conçues pour vous préparer aux métiers d'avenir de l'automobile.
+            Découvrez notre <strong>catalogue complet de 13 formations certifiantes</strong>, du CAP au BTS, 
+            incluant les <em>spécialisations véhicules électriques, hybrides et hydrogène</em>. 
+            Formations conçues pour vous préparer aux <strong>métiers d'avenir de l'automobile</strong> 
+            avec un <strong>taux d'insertion de 87%</strong>.
           </p>
         </div>
 

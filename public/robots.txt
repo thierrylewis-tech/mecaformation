@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mecaformation.fr/sitemap.xml
+
+# Specific pages
+Allow: /formations
+Allow: /programme
+Allow: /temoignages
+Allow: /contact
+Allow: /ressources
+Allow: /actualites
+
+# Block admin areas (if any in future)
+Disallow: /admin/
+Disallow: /private/
+
+# Crawl delay
+Crawl-delay: 1

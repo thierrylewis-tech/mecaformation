@@ -27,30 +27,34 @@ const Header = () => {
       </div>
 
       {/* Main header */}
-      <header className="bg-white shadow-lg sticky top-0 z-50">
+      <header className="bg-white shadow-lg sticky top-0 z-50" role="banner">
+        {/* Skip to main content link for accessibility */}
+        <a href="#main-content" className="skip-link">
+          Aller au contenu principal
+        </a>
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center py-4">
             {/* Logo */}
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2" itemScope itemType="https://schema.org/Organization">
               <div className="bg-blue-700 p-2 rounded-lg">
                 <Wrench className="h-8 w-8 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-slate-800">MécaFormation</h1>
-                <p className="text-sm text-slate-600">Centre de formation automobile</p>
+                <h1 className="text-2xl font-bold text-slate-800" itemProp="name">MécaFormation</h1>
+                <p className="text-sm text-slate-600" itemProp="description">Centre de formation automobile certifié</p>
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="#accueil" className="text-slate-700 hover:text-blue-700 font-medium transition-colors">Accueil</a>
-              <a href="#formations" className="text-slate-700 hover:text-blue-700 font-medium transition-colors">Formations</a>
-              <a href="#programme" className="text-slate-700 hover:text-blue-700 font-medium transition-colors">Programme</a>
-              <a href="#ressources" className="text-slate-700 hover:text-blue-700 font-medium transition-colors">Ressources</a>
-              <a href="#temoignages" className="text-slate-700 hover:text-blue-700 font-medium transition-colors">Témoignages</a>
-              <a href="#actualites" className="text-slate-700 hover:text-blue-700 font-medium transition-colors">Actualités</a>
-              <a href="#contact" className="text-slate-700 hover:text-blue-700 font-medium transition-colors">Contact</a>
-              <button className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium">
+            <nav className="hidden md:flex items-center space-x-8" role="navigation" aria-label="Navigation principale">
+              <a href="#accueil" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Aller à la section Accueil">Accueil</a>
+              <a href="#formations" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Découvrir nos formations">Formations</a>
+              <a href="#programme" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Voir le programme détaillé">Programme</a>
+              <a href="#ressources" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Accéder aux ressources pédagogiques">Ressources</a>
+              <a href="#temoignages" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Lire les témoignages d'étudiants">Témoignages</a>
+              <a href="#actualites" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Consulter les actualités">Actualités</a>
+              <a href="#contact" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Nous contacter">Contact</a>
+              <button className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium hover:scale-105 transform" aria-label="Demander des informations sur nos formations">
                 Demander une info
               </button>
             </nav>
@@ -59,6 +63,8 @@ const Header = () => {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2"
+              aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+              aria-expanded={isMenuOpen}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -67,7 +73,7 @@ const Header = () => {
           {/* Mobile Navigation */}
           {isMenuOpen && (
             <div className="md:hidden pb-4">
-              <nav className="flex flex-col space-y-4">
+              <nav className="flex flex-col space-y-4" role="navigation" aria-label="Navigation mobile">
                 <a href="#accueil" className="text-slate-700 hover:text-blue-700 font-medium">Accueil</a>
                 <a href="#formations" className="text-slate-700 hover:text-blue-700 font-medium">Formations</a>
                 <a href="#programme" className="text-slate-700 hover:text-blue-700 font-medium">Programme</a>
@@ -75,7 +81,7 @@ const Header = () => {
                 <a href="#temoignages" className="text-slate-700 hover:text-blue-700 font-medium">Témoignages</a>
                 <a href="#actualites" className="text-slate-700 hover:text-blue-700 font-medium">Actualités</a>
                 <a href="#contact" className="text-slate-700 hover:text-blue-700 font-medium">Contact</a>
-                <button className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium w-fit">
+                <button className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium w-fit" aria-label="Demander des informations">
                   Demander une info
                 </button>
               </nav>

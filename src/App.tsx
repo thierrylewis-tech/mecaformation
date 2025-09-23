@@ -12,15 +12,19 @@ import ResourcesPlatform from './components/ResourcesPlatform';
 import ChatBot from './components/ChatBot';
 import VoiceRecorder from './components/VoiceRecorder';
 import AIAvatar from './components/AIAvatar';
+import CertificationsSection from './components/CertificationsSection';
 
 function App() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <Hero />
+      <main id="main-content" role="main">
+        <Hero />
+      </main>
       <StatsSection />
       <FormationsSection />
       <ProgrammeSection />
+      <CertificationsSection />
       <TestimonialsSection />
       <ResourcesPlatform />
       <NewsSection />
