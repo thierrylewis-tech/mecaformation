@@ -50,6 +50,7 @@ const Header = () => {
               <a href="#accueil" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Aller à la section Accueil">Accueil</a>
               <a href="#formations" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Découvrir nos formations">Formations</a>
               <a href="#programme" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Voir nos programmes spécialisés">Programmes</a>
+              <a href="#abonnements" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Voir nos formules d'abonnement">Abonnements</a>
               <a href="#ressources" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Accéder aux ressources pédagogiques">Ressources</a>
               <a href="#auto-reparation" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Auto-réparation guidée">Auto-Réparation</a>
               <a href="#diagnostic-distance" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Diagnostic à distance">Diagnostic</a>
@@ -84,6 +85,7 @@ const Header = () => {
                 <a href="#accueil" className="text-slate-700 hover:text-blue-700 font-medium">Accueil</a>
                 <a href="#formations" className="text-slate-700 hover:text-blue-700 font-medium">Formations</a>
                 <a href="#programme" className="text-slate-700 hover:text-blue-700 font-medium">Programmes</a>
+               <a href="#abonnements" className="text-slate-700 hover:text-blue-700 font-medium">Abonnements</a>
                <a href="#ressources" className="text-slate-700 hover:text-blue-700 font-medium">Ressources</a>
                 <a href="#auto-reparation" className="text-slate-700 hover:text-blue-700 font-medium">Auto-Réparation</a>
                 <a href="#diagnostic-distance" className="text-slate-700 hover:text-blue-700 font-medium">Diagnostic</a>

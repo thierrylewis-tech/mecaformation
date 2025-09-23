@@ -15,6 +15,7 @@ import AIAvatar from './components/AIAvatar';
 import CertificationsSection from './components/CertificationsSection';
 import DIYRepairModule from './components/DIYRepairModule';
 import RemoteDiagnosticModule from './components/RemoteDiagnosticModule';
+import SubscriptionPlans from './components/SubscriptionPlans';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       <StatsSection />
       <FormationsSection />
       <ProgrammeSection />
+      <SubscriptionPlans />
       <CertificationsSection />
       <TestimonialsSection />
       <ResourcesPlatform />
