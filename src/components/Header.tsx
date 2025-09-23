@@ -54,6 +54,7 @@ const Header = () => {
               <a href="#ressources" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Accéder aux ressources pédagogiques">Ressources</a>
               <a href="#auto-reparation" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Auto-réparation guidée">Auto-Réparation</a>
               <a href="#diagnostic-distance" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Diagnostic à distance">Diagnostic</a>
+              <a href="#tunnel-vente" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Tunnel de vente">Tunnel Vente</a>
               <a href="#temoignages" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Lire les témoignages d'étudiants">Témoignages</a>
               <a href="#actualites" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Consulter les actualités">Actualités</a>
               <a href="#contact" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Nous contacter">Contact</a>
@@ -89,6 +90,7 @@ const Header = () => {
                <a href="#ressources" className="text-slate-700 hover:text-blue-700 font-medium">Ressources</a>
                 <a href="#auto-reparation" className="text-slate-700 hover:text-blue-700 font-medium">Auto-Réparation</a>
                 <a href="#diagnostic-distance" className="text-slate-700 hover:text-blue-700 font-medium">Diagnostic</a>
+               <a href="#tunnel-vente" className="text-slate-700 hover:text-blue-700 font-medium">Tunnel Vente</a>
                 <a href="#temoignages" className="text-slate-700 hover:text-blue-700 font-medium">Témoignages</a>
                 <a href="#actualites" className="text-slate-700 hover:text-blue-700 font-medium">Actualités</a>
                 <a href="#contact" className="text-slate-700 hover:text-blue-700 font-medium">Contact</a>
