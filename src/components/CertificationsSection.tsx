@@ -4,13 +4,6 @@ import { Award, Shield, CheckCircle, Star, Users, Trophy, Target, Zap } from 'lu
 const CertificationsSection = () => {
   const certifications = [
     {
-      icon: Award,
-      title: "Certification Qualiopi",
-      description: "Centre de formation certifié Qualiopi pour la qualité de nos formations",
-      badge: "Officiel",
-      color: "bg-blue-100 text-blue-700"
-    },
-    {
       icon: Shield,
       title: "Formations Éligibles CPF",
       description: "Toutes nos formations sont éligibles au Compte Personnel de Formation",
@@ -172,7 +165,7 @@ const CertificationsSection = () => {
           <div className="inline-flex items-center space-x-8 bg-white rounded-xl p-6 shadow-lg">
             <div className="flex items-center space-x-2">
               <CheckCircle className="h-5 w-5 text-green-500" />
-              <span className="text-sm font-medium text-slate-700">Certifié Qualiopi</span>
+              <span className="text-sm font-medium text-slate-700">Formation Certifiante</span>
             </div>
             <div className="flex items-center space-x-2">
               <CheckCircle className="h-5 w-5 text-green-500" />

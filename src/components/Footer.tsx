@@ -190,7 +190,7 @@ const Footer = () => {
         <div className="container mx-auto px-4">
           <div className="text-center text-slate-400 text-sm">
             <span className="inline-flex items-center">
-              🏆 Centre de formation certifié Qualiopi • Formations éligibles CPF • Partenaire officiel des constructeurs automobiles
+              🏆 Formations éligibles CPF • Partenaire officiel des constructeurs automobiles • Excellence pédagogique reconnue
             </span>
           </div>
         </div>
