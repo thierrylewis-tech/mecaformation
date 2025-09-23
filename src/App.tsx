@@ -13,6 +13,7 @@ import ChatBot from './components/ChatBot';
 import VoiceRecorder from './components/VoiceRecorder';
 import AIAvatar from './components/AIAvatar';
 import CertificationsSection from './components/CertificationsSection';
+import DIYRepairModule from './components/DIYRepairModule';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <CertificationsSection />
       <TestimonialsSection />
       <ResourcesPlatform />
+      <DIYRepairModule />
       <NewsSection />
       <ContactSection />
       <Footer />
