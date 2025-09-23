@@ -33,7 +33,8 @@ import {
   ChevronRight,
   Award,
   Target,
-  Users
+  Users,
+  Calendar
 } from 'lucide-react';
 
 interface DiagnosticSession {
