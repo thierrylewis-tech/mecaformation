@@ -49,14 +49,19 @@ const Header = () => {
             <nav className="hidden md:flex items-center space-x-8" role="navigation" aria-label="Navigation principale">
               <a href="#accueil" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Aller à la section Accueil">Accueil</a>
               <a href="#formations" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Découvrir nos formations">Formations</a>
-              <a href="#programme" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Voir le programme détaillé">Programme</a>
+              <a href="#programme" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Voir nos programmes spécialisés">Programmes</a>
               <a href="#ressources" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Accéder aux ressources pédagogiques">Ressources</a>
               <a href="#temoignages" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Lire les témoignages d'étudiants">Témoignages</a>
               <a href="#actualites" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Consulter les actualités">Actualités</a>
               <a href="#contact" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Nous contacter">Contact</a>
-              <button className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium hover:scale-105 transform" aria-label="Demander des informations sur nos formations">
-                Demander une info
-              </button>
+              <div className="flex items-center space-x-3">
+                <button className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium hover:scale-105 transform" aria-label="S'inscrire maintenant">
+                  Inscription Maintenant
+                </button>
+                <button className="border border-blue-700 text-blue-700 px-6 py-2 rounded-lg hover:bg-blue-700 hover:text-white transition-colors font-medium" aria-label="Nous contacter">
+                  Contactez-Nous
+                </button>
+              </div>
             </nav>
 
             {/* Mobile menu button */}
@@ -76,14 +81,19 @@ const Header = () => {
               <nav className="flex flex-col space-y-4" role="navigation" aria-label="Navigation mobile">
                 <a href="#accueil" className="text-slate-700 hover:text-blue-700 font-medium">Accueil</a>
                 <a href="#formations" className="text-slate-700 hover:text-blue-700 font-medium">Formations</a>
-                <a href="#programme" className="text-slate-700 hover:text-blue-700 font-medium">Programme</a>
+                <a href="#programme" className="text-slate-700 hover:text-blue-700 font-medium">Programmes</a>
                <a href="#ressources" className="text-slate-700 hover:text-blue-700 font-medium">Ressources</a>
                 <a href="#temoignages" className="text-slate-700 hover:text-blue-700 font-medium">Témoignages</a>
                 <a href="#actualites" className="text-slate-700 hover:text-blue-700 font-medium">Actualités</a>
                 <a href="#contact" className="text-slate-700 hover:text-blue-700 font-medium">Contact</a>
-                <button className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium w-fit" aria-label="Demander des informations">
-                  Demander une info
-                </button>
+                <div className="flex flex-col space-y-2">
+                  <button className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium" aria-label="S'inscrire maintenant">
+                    Inscription Maintenant
+                  </button>
+                  <button className="border border-blue-700 text-blue-700 px-6 py-2 rounded-lg hover:bg-blue-700 hover:text-white transition-colors font-medium" aria-label="Nous contacter">
+                    Contactez-Nous
+                  </button>
+                </div>
               </nav>
             </div>
           )}

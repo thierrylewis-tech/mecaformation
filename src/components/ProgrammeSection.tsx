@@ -4,6 +4,22 @@ import { Book, Wrench, Users, Award, ChevronDown, ChevronRight } from 'lucide-re
 const ProgrammeSection = () => {
   const [activeModule, setActiveModule] = useState(0);
 
+  const specializedPrograms = [
+    {
+      title: "Formation en Électrification Automobile",
+      objectives: "Apprendre les bases des véhicules électriques et hybrides, comprendre les systèmes de propulsion électrique, et maîtriser les techniques de maintenance.",
+      subjects: [
+        "Batteries et systèmes de stockage d'énergie",
+        "Moteurs électriques et onduleurs",
+        "Systèmes de recharge AC/DC",
+        "Diagnostic de pannes spécialisé"
+      ],
+      skills: "Capacité à effectuer des interventions de maintenance et de réparation sur des véhicules électriques et hybrides.",
+      icon: "⚡",
+      color: "from-blue-500 to-cyan-500"
+    }
+  ];
+
   const modules = [
     {
       icon: Book,
@@ -98,6 +114,45 @@ const ProgrammeSection = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16">
+          {/* Specialized Programs Section */}
+          <div className="lg:col-span-2 mb-16">
+            <h3 className="text-2xl font-bold text-slate-800 mb-8 text-center">Nos Programmes de Formation Spécialisés</h3>
+            <div className="grid md:grid-cols-1 gap-8">
+              {specializedPrograms.map((program, index) => (
+                <div key={index} className={`bg-gradient-to-r ${program.color} rounded-2xl p-8 text-white shadow-xl`}>
+                  <div className="flex items-center mb-6">
+                    <span className="text-4xl mr-4">{program.icon}</span>
+                    <h4 className="text-2xl font-bold">{program.title}</h4>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div>
+                      <h5 className="font-semibold mb-3 text-cyan-100">Objectifs</h5>
+                      <p className="text-sm leading-relaxed">{program.objectives}</p>
+                    </div>
+                    
+                    <div>
+                      <h5 className="font-semibold mb-3 text-cyan-100">Sujets couverts</h5>
+                      <ul className="text-sm space-y-1">
+                        {program.subjects.map((subject, subIndex) => (
+                          <li key={subIndex} className="flex items-center">
+                            <span className="w-1.5 h-1.5 bg-white rounded-full mr-2"></span>
+                            {subject}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h5 className="font-semibold mb-3 text-cyan-100">Compétences acquises</h5>
+                      <p className="text-sm leading-relaxed">{program.skills}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Left side - Modules */}
           <div>
             <h3 className="text-2xl font-bold text-slate-800 mb-8">Modules de formation</h3>

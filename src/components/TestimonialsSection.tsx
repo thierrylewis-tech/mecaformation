@@ -5,6 +5,54 @@ const TestimonialsSection = () => {
   const testimonials = [
     {
       id: 1,
+      name: "Jean Dubois",
+      age: 24,
+      formation: "Formation Électrification Automobile - Promotion 2023",
+      location: "Paris",
+      currentJob: "Technicien chez PSA",
+      avatar: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300",
+      rating: 5,
+      testimonial: "Grâce à cette formation, j'ai pu obtenir un poste dans une concession PSA et je me sens parfaitement préparé pour les défis de la mécanique automobile moderne.",
+      highlight: "Embauché directement chez PSA"
+    },
+    {
+      id: 2,
+      name: "Marie Leroux",
+      age: 26,
+      formation: "CAP MVA - Promotion 2022",
+      location: "Lyon",
+      currentJob: "Mécanicienne spécialisée véhicules électriques",
+      avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300",
+      rating: 5,
+      testimonial: "Les instructeurs sont très compétents et le contenu de la formation est très pertinent pour le marché du travail actuel.",
+      highlight: "Formation parfaitement adaptée au marché"
+    },
+    {
+      id: 3,
+      name: "Pierre Martin",
+      age: 28,
+      formation: "Formation Véhicules Électriques - Promotion 2023",
+      location: "Marseille",
+      currentJob: "Expert en véhicules électriques et hybrides",
+      avatar: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=300",
+      rating: 5,
+      testimonial: "Cette formation m'a permis de devenir un expert en véhicules électriques et hybrides. Je recommande vivement ce programme à tous ceux qui souhaitent se spécialiser dans ce domaine.",
+      highlight: "Devenu expert en électrification automobile"
+    },
+    {
+      id: 4,
+      name: "Sophie Tremblay",
+      age: 23,
+      formation: "Stage Privilégié PSA - Promotion 2023",
+      location: "Toulouse",
+      currentJob: "Technicienne diagnostic chez PSA",
+      avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300",
+      rating: 5,
+      testimonial: "Les stages privilégiés avec PSA ont été une expérience inestimable. J'ai pu appliquer ce que j'ai appris en classe dans un environnement professionnel.",
+      highlight: "Stage privilégié transformé en CDI"
+    },
+    {
+      id: 5,
       name: "Thomas Dubois",
       age: 22,
       formation: "CAP MVA - Promotion 2023",
@@ -16,19 +64,7 @@ const TestimonialsSection = () => {
       highlight: "Embauché directement après le stage"
     },
     {
-      id: 2,
-      name: "Marie Leroux",
-      age: 25,
-      formation: "Bac Pro Maintenance - Promotion 2022",
-      location: "Paris",
-      currentJob: "Chef d'équipe chez Renault",
-      avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300",
-      rating: 5,
-      testimonial: "Une reconversion réussie grâce à cette formation ! L'alternance m'a permis d'acquérir une vraie expérience professionnelle. Aujourd'hui je manage une équipe de 5 mécaniciens. Merci pour cet accompagnement de qualité.",
-      highlight: "Évolution rapide vers un poste de management"
-    },
-    {
-      id: 3,
+      id: 6,
       name: "Alexandre Martin",
       age: 20,
       formation: "CAP MVA - Promotion 2023",
@@ -91,7 +127,7 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Testimonials */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {testimonials.map((testimonial) => (
             <div key={testimonial.id} className="group">
               <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:border-orange-200 h-full">
