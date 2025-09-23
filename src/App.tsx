@@ -14,6 +14,7 @@ import VoiceRecorder from './components/VoiceRecorder';
 import AIAvatar from './components/AIAvatar';
 import CertificationsSection from './components/CertificationsSection';
 import DIYRepairModule from './components/DIYRepairModule';
+import RemoteDiagnosticModule from './components/RemoteDiagnosticModule';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <TestimonialsSection />
       <ResourcesPlatform />
       <DIYRepairModule />
+      <RemoteDiagnosticModule />
       <NewsSection />
       <ContactSection />
       <Footer />
