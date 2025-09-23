@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Wrench, Play, Pause, RotateCcw, Search, Filter, Star, Clock, User, Bot, Send, Mic, MicOff, Volume2, Camera, Image, FileText, CheckCircle, AlertTriangle, PenTool as Tool, Zap, Settings, Car, Battery, Gauge, X, ChevronRight, Download, Heart, Share2 } from 'lucide-react';
+import { Wrench, Play, Pause, RotateCcw, Search, Filter, Star, Clock, User, Bot, Send, Mic, MicOff, Volume2, Camera, Image, FileText, CheckCircle, AlertTriangle, Zap, Settings, Car, Battery, Gauge, X, ChevronRight, Download, Heart, Share2 } from 'lucide-react';
 
 interface RepairGuide {
   id: string;
@@ -611,7 +611,7 @@ const DIYRepairModule = () => {
               {/* Tools Required */}
               <div className="mb-8">
                 <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
-                  <Tool className="h-5 w-5 mr-2 text-orange-500" />
+                  <Wrench className="h-5 w-5 mr-2 text-orange-500" />
                   Outils requis
                 </h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
