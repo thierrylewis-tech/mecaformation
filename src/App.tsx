@@ -20,6 +20,7 @@ import SalesFunnelModule from './components/SalesFunnelModule';
 import PaymentMethodsAnalysis from './components/PaymentMethodsAnalysis';
 import AdvancedChatBot from './components/AdvancedChatBot';
 import KnowledgeBase from './components/KnowledgeBase';
+import DatabaseStatus from './components/DatabaseStatus';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
       <AdvancedChatBot />
       <VoiceRecorder />
       <AIAvatar />
+      <DatabaseStatus />
     </div>
   );
 }
