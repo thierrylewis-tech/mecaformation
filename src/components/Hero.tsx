@@ -149,6 +149,54 @@ const Hero = () => {
         </div>
       </div>
     </section>
+
+    <script dangerouslySetInnerHTML={{
+      __html: `
+        document.addEventListener('DOMContentLoaded', function() {
+          document.getElementById('form-diagnostic').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const diagnosticData = {
+              type: 'diagnostic_garage',
+              garage_name: document.getElementById('garage-name').value,
+              email: document.getElementById('garage-email').value,
+              vehicle: {
+                brand: document.getElementById('vehicle-brand').value,
+                model: document.getElementById('vehicle-model').value
+              },
+              problem: document.getElementById('problem-description').value,
+              urgency: document.getElementById('urgency').value,
+              timestamp: new Date().toISOString(),
+              prix_attendu: 15
+            };
+            
+            const webhookURL = 'TON_WEBHOOK_URL_DIAGNOSTIC';
+            
+            try {
+              document.getElementById('diagnostic-result').innerHTML = '🔧 Analyse en cours...';
+              
+              const response = await fetch(webhookURL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(diagnosticData)
+              });
+              
+              if (response.ok) {
+                document.getElementById('diagnostic-result').innerHTML = \`
+                  <div style="background: #d4edda; padding: 15px; margin-top: 10px; border-radius: 4px;">
+                    ✅ <strong>Diagnostic envoyé !</strong><br>
+                    💳 <strong>Lien de paiement envoyé par email</strong><br>
+                    ⏱️ <strong>Solution dans les 2 minutes après paiement</strong>
+                  </div>
+                \`;
+              }
+            } catch (error) {
+              document.getElementById('diagnostic-result').innerHTML = '❌ Erreur : ' + error.message;
+            }
+          });
+        });
+      `
+    }} />
   );
 };
 
