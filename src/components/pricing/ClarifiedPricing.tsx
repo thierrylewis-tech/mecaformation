@@ -429,7 +429,7 @@ const ClarifiedPricing = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {pricingMode === 'subscription' ? (
+                  {(pricingMode === 'subscription' ? (
                     [
                       ['Cours en ligne', true, true, true],
                       ['Vidéos HD', true, true, true],
