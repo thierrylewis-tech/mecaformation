@@ -89,6 +89,26 @@ const Hero = () => {
             <AnimatedAvatar3D />
           </div>
         </div>
+
+        {/* Test Inscription Form */}
+        <div id="test-inscription" style={{background: '#f0f8ff', padding: '20px', margin: '20px', borderRadius: '8px'}}>
+          <h3>🚀 Test Machine Automatisée</h3>
+          <form id="form-test">
+            <input type="text" id="nom" placeholder="Nom" required style={{margin: '5px', padding: '10px'}} />
+            <input type="email" id="email" placeholder="Email" required style={{margin: '5px', padding: '10px'}} />
+            <select id="niveau" required style={{margin: '5px', padding: '10px'}}>
+              <option value="">Choisir niveau</option>
+              <option value="Apprenti">Apprenti</option>
+              <option value="CAP">CAP</option>
+              <option value="BTS">BTS</option>
+              <option value="Garage">Garage</option>
+            </select>
+            <button type="submit" style={{margin: '5px', padding: '10px', background: '#007bff', color: 'white', border: 'none', borderRadius: '4px'}}>
+              🚀 TESTER AUTOMATION
+            </button>
+          </form>
+          <div id="result"></div>
+        </div>
       </div>
     </section>
   );
