@@ -4,6 +4,7 @@ import AnimatedAvatar3D from './AnimatedAvatar3D';
 
 const Hero = () => {
   return (
+    <>
     <section id="accueil" className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-slate-800 text-white overflow-hidden" itemScope itemType="https://schema.org/EducationalOrganization">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-black/20"></div>
@@ -197,6 +198,7 @@ const Hero = () => {
         });
       `
     }} />
+    </>
   );
 };
 
