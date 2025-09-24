@@ -109,6 +109,44 @@ const Hero = () => {
           </form>
           <div id="result"></div>
         </div>
+
+        {/* Diagnostic Garage Form */}
+        <div id="diagnostic-garage" style={{background: '#fff3cd', padding: '20px', margin: '20px', borderRadius: '8px'}}>
+          <h3>🔧 Diagnostic Garage Express - 15€</h3>
+          <p><strong>Problème automobile ? Solution en 2 minutes !</strong></p>
+          
+          <form id="form-diagnostic">
+            <input type="text" id="garage-name" placeholder="Nom du garage" required style={{margin: '5px', padding: '10px', width: '200px'}} />
+            <input type="email" id="garage-email" placeholder="Email" required style={{margin: '5px', padding: '10px', width: '200px'}} />
+            
+            <select id="vehicle-brand" required style={{margin: '5px', padding: '10px'}}>
+              <option value="">Marque véhicule</option>
+              <option value="Renault">Renault</option>
+              <option value="Peugeot">Peugeot</option>
+              <option value="Citroën">Citroën</option>
+              <option value="Volkswagen">Volkswagen</option>
+              <option value="BMW">BMW</option>
+              <option value="Mercedes">Mercedes</option>
+            </select>
+            
+            <input type="text" id="vehicle-model" placeholder="Modèle" required style={{margin: '5px', padding: '10px'}} />
+            
+            <textarea id="problem-description" placeholder="Décrivez le problème..." required 
+                      style={{margin: '5px', padding: '10px', width: '300px', height: '80px'}}></textarea>
+            
+            <select id="urgency" required style={{margin: '5px', padding: '10px'}}>
+              <option value="">Urgence</option>
+              <option value="1">Faible</option>
+              <option value="3">Moyenne</option>
+              <option value="5">Critique</option>
+            </select>
+            
+            <button type="submit" style={{margin: '10px', padding: '15px', background: '#28a745', color: 'white', border: 'none', borderRadius: '4px', fontSize: '16px'}}>
+              💰 DIAGNOSTIC 15€
+            </button>
+          </form>
+          <div id="diagnostic-result"></div>
+        </div>
       </div>
     </section>
   );
