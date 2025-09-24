@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
-import { Menu, X, Wrench, Phone, Mail, MapPin } from 'lucide-react';
+import { Menu, X, Wrench, Phone, Mail, MapPin, User, LogIn, UserPlus } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
+import LoginModal from './auth/LoginModal';
+import RegisterModal from './auth/RegisterModal';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
+  
+  const { user, logout } = useAuth();
 
   return (
     <>
@@ -61,12 +68,37 @@ const Header = () => {
               <a href="#actualites" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Consulter les actualités">Actualités</a>
               <a href="#contact" className="text-slate-700 hover:text-blue-700 font-medium transition-colors" aria-label="Nous contacter">Contact</a>
               <div className="flex items-center space-x-3">
-                <button className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium hover:scale-105 transform" aria-label="S'inscrire maintenant">
-                  Inscription Maintenant
-                </button>
-                <button className="border border-blue-700 text-blue-700 px-6 py-2 rounded-lg hover:bg-blue-700 hover:text-white transition-colors font-medium" aria-label="Nous contacter">
-                  Contactez-Nous
-                </button>
+                {user ? (
+                  <div className="flex items-center space-x-3">
+                    <div className="flex items-center space-x-2">
+                      <User className="h-4 w-4 text-slate-600" />
+                      <span className="text-slate-700 font-medium">{user.firstName}</span>
+                    </div>
+                    <button 
+                      onClick={logout}
+                      className="border border-slate-300 text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors font-medium"
+                    >
+                      Déconnexion
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    <button 
+                      onClick={() => setShowLogin(true)}
+                      className="border border-blue-700 text-blue-700 px-6 py-2 rounded-lg hover:bg-blue-700 hover:text-white transition-colors font-medium flex items-center"
+                    >
+                      <LogIn className="h-4 w-4 mr-2" />
+                      Connexion
+                    </button>
+                    <button 
+                      onClick={() => setShowRegister(true)}
+                      className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium hover:scale-105 transform flex items-center"
+                    >
+                      <UserPlus className="h-4 w-4 mr-2" />
+                      Inscription
+                    </button>
+                  </>
+                )}
               </div>
             </nav>
 
@@ -98,18 +130,57 @@ const Header = () => {
                 <a href="#actualites" className="text-slate-700 hover:text-blue-700 font-medium">Actualités</a>
                 <a href="#contact" className="text-slate-700 hover:text-blue-700 font-medium">Contact</a>
                 <div className="flex flex-col space-y-2">
-                  <button className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium" aria-label="S'inscrire maintenant">
-                    Inscription Maintenant
-                  </button>
-                  <button className="border border-blue-700 text-blue-700 px-6 py-2 rounded-lg hover:bg-blue-700 hover:text-white transition-colors font-medium" aria-label="Nous contacter">
-                    Contactez-Nous
-                  </button>
+                  {user ? (
+                    <div className="text-center">
+                      <div className="text-slate-700 font-medium mb-2">Bonjour {user.firstName}</div>
+                      <button 
+                        onClick={logout}
+                        className="border border-slate-300 text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors font-medium"
+                      >
+                        Déconnexion
+                      </button>
+                    </div>
+                  ) : (
+                    <>
+                      <button 
+                        onClick={() => setShowLogin(true)}
+                        className="border border-blue-700 text-blue-700 px-6 py-2 rounded-lg hover:bg-blue-700 hover:text-white transition-colors font-medium"
+                      >
+                        Connexion
+                      </button>
+                      <button 
+                        onClick={() => setShowRegister(true)}
+                        className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium"
+                      >
+                        Inscription
+                      </button>
+                    </>
+                  )}
                 </div>
               </nav>
             </div>
           )}
         </div>
       </header>
+
+      {/* Auth Modals */}
+      <LoginModal
+        isOpen={showLogin}
+        onClose={() => setShowLogin(false)}
+        onSwitchToRegister={() => {
+          setShowLogin(false);
+          setShowRegister(true);
+        }}
+      />
+
+      <RegisterModal
+        isOpen={showRegister}
+        onClose={() => setShowRegister(false)}
+        onSwitchToLogin={() => {
+          setShowRegister(false);
+          setShowLogin(true);
+        }}
+      />
     </>
   );
 };

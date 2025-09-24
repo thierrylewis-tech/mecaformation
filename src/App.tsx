@@ -1,4 +1,5 @@
 import React from 'react';
+import { AuthProvider } from './contexts/AuthContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import FormationsSection from './components/FormationsSection';
@@ -9,20 +10,28 @@ import NewsSection from './components/NewsSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import ResourcesPlatform from './components/ResourcesPlatform';
-import ChatBot from './components/ChatBot';
 import VoiceRecorder from './components/VoiceRecorder';
-import AIAvatar from './components/AIAvatar';
 import CertificationsSection from './components/CertificationsSection';
 import DIYRepairModule from './components/DIYRepairModule';
 import RemoteDiagnosticModule from './components/RemoteDiagnosticModule';
-import SubscriptionPlans from './components/SubscriptionPlans';
+import ClarifiedPricing from './components/pricing/ClarifiedPricing';
 import SalesFunnelModule from './components/SalesFunnelModule';
 import PaymentMethodsAnalysis from './components/PaymentMethodsAnalysis';
 import AdvancedChatBot from './components/AdvancedChatBot';
 import KnowledgeBase from './components/KnowledgeBase';
 import DatabaseStatus from './components/DatabaseStatus';
+import StudentDashboard from './components/dashboard/StudentDashboard';
+import { useAuth } from './contexts/AuthContext';
 
-function App() {
+const AppContent = () => {
+  const { user } = useAuth();
+
+  // Si l'utilisateur est connecté, afficher le dashboard
+  if (user) {
+    return <StudentDashboard />;
+  }
+
+  // Sinon, afficher le site public
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -32,7 +41,7 @@ function App() {
       <StatsSection />
       <FormationsSection />
       <ProgrammeSection />
-      <SubscriptionPlans />
+      <ClarifiedPricing />
       <CertificationsSection />
       <TestimonialsSection />
       <ResourcesPlatform />
@@ -46,9 +55,15 @@ function App() {
       <Footer />
       <AdvancedChatBot />
       <VoiceRecorder />
-      <AIAvatar />
       <DatabaseStatus />
     </div>
+  );
+};
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }
 
