@@ -14,6 +14,7 @@ const DatabaseStatus = () => {
   const [tableStatuses, setTableStatuses] = useState<TableStatus[]>([]);
   const [loading, setLoading] = useState(false);
   const [lastCheck, setLastCheck] = useState<Date | null>(null);
+  const [dbStats, setDbStats] = useState<any>(null);
 
   const expectedTables = [
     'automotive_knowledge',
@@ -25,6 +26,16 @@ const DatabaseStatus = () => {
     'user_progress',
     'learning_modules'
   ];
+
+  const loadDatabaseStats = async () => {
+    try {
+      const { getDatabaseStats } = await import('../lib/supabase');
+      const stats = await getDatabaseStats();
+      setDbStats(stats);
+    } catch (error) {
+      console.error('Erreur chargement stats:', error);
+    }
+  };
 
   const checkTables = async () => {
     setLoading(true);
@@ -62,6 +73,12 @@ const DatabaseStatus = () => {
     setTableStatuses(statuses);
     setLastCheck(new Date());
     setLoading(false);
+    
+    // Charger les statistiques si toutes les tables existent
+    const allTablesExist = statuses.every(s => s.exists);
+    if (allTablesExist) {
+      await loadDatabaseStats();
+    }
   };
 
   useEffect(() => {
@@ -150,6 +167,31 @@ const DatabaseStatus = () => {
                   <div className="text-xs text-slate-500">Statut</div>
                 </div>
               </div>
+              
+              {/* Statistiques détaillées */}
+              {dbStats && (
+                <div className="mt-4 pt-4 border-t border-slate-200">
+                  <h4 className="font-semibold text-slate-800 mb-3 text-sm">Contenu de la base :</h4>
+                  <div className="grid grid-cols-2 gap-3 text-xs">
+                    <div className="flex justify-between">
+                      <span className="text-slate-600">Articles techniques:</span>
+                      <span className="font-semibold text-blue-600">{dbStats.automotive_articles}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-600">Cours enseignement:</span>
+                      <span className="font-semibold text-green-600">{dbStats.education_courses}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-600">Codes diagnostic:</span>
+                      <span className="font-semibold text-orange-600">{dbStats.diagnostic_codes}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-600">Modules formation:</span>
+                      <span className="font-semibold text-purple-600">{dbStats.learning_modules}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Refresh Button */}

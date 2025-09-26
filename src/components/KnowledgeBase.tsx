@@ -72,96 +72,41 @@ const KnowledgeBase = () => {
   const loadKnowledgeBase = async () => {
     setLoading(true);
     try {
-      // Données de démonstration en attendant la configuration Supabase
-      const mockAutomotiveData: KnowledgeItem[] = [
-        {
-          id: '1',
-          title: 'Diagnostic des Véhicules Électriques',
-          category: 'moteur_electrique',
-          subcategory: 'Batteries et Moteurs',
-          content: 'Guide complet pour diagnostiquer les pannes sur véhicules électriques. Couvre les systèmes de batteries, moteurs électriques, chargeurs embarqués et systèmes de refroidissement.',
-          type: 'automotive',
-          difficulty_level: 4,
-          duration_minutes: 45,
-          views_count: 1250,
-          rating: 4.8,
-          keywords: ['diagnostic', 'électrique', 'batterie', 'moteur']
-        },
-        {
-          id: '2',
-          title: 'Systèmes Hybrides Toyota',
-          category: 'hybride',
-          subcategory: 'Architecture Hybride',
-          content: 'Comprendre le fonctionnement des systèmes hybrides Toyota HSD (Hybrid Synergy Drive). Analyse des composants, stratégies de contrôle et procédures de maintenance.',
-          type: 'automotive',
-          difficulty_level: 3,
-          duration_minutes: 60,
-          views_count: 890,
-          rating: 4.6,
-          keywords: ['hybride', 'toyota', 'HSD', 'maintenance']
-        },
-        {
-          id: '3',
-          title: 'Codes Défauts ADAS',
-          category: 'adas',
-          subcategory: 'Systèmes d\'Aide à la Conduite',
-          content: 'Diagnostic et réparation des systèmes ADAS. Calibrage des caméras, radars, capteurs de stationnement et systèmes de freinage d\'urgence.',
-          type: 'automotive',
-          difficulty_level: 5,
-          duration_minutes: 90,
-          views_count: 567,
-          rating: 4.9,
-          keywords: ['ADAS', 'calibrage', 'radar', 'caméra']
-        }
-      ];
+      // Charger les données réelles depuis Supabase
+      const { data: automotiveData } = await searchAutomotiveKnowledge('', selectedCategory);
+      const { data: educationData } = await searchGeneralEducation('', selectedCategory, selectedLevel);
+      
+      // Convertir en format uniforme
+      const automotiveItems: KnowledgeItem[] = (automotiveData || []).map(item => ({
+        id: item.id,
+        title: item.title,
+        category: item.category,
+        subcategory: item.subcategory,
+        content: item.content,
+        type: 'automotive' as const,
+        difficulty_level: item.difficulty_level,
+        views_count: item.views_count,
+        rating: item.rating,
+        keywords: item.keywords
+      }));
+      
+      const educationItems: KnowledgeItem[] = (educationData || []).map(item => ({
+        id: item.id,
+        title: item.title,
+        category: item.subject,
+        content: item.content,
+        type: 'education' as const,
+        difficulty_level: item.difficulty_level,
+        duration_minutes: item.duration_minutes,
+        views_count: 0, // Pas de vues pour l'enseignement général
+        rating: 4.5, // Note par défaut
+        keywords: item.keywords,
+        level: item.level,
+        subject: item.subject
+      }));
 
-      const mockEducationData: KnowledgeItem[] = [
-        {
-          id: '4',
-          title: 'Mathématiques Appliquées à l\'Automobile',
-          category: 'mathematiques',
-          content: 'Calculs de puissance, couple, rendement et consommation. Formules essentielles pour comprendre les performances automobiles.',
-          type: 'education',
-          difficulty_level: 2,
-          duration_minutes: 30,
-          views_count: 445,
-          rating: 4.3,
-          keywords: ['mathématiques', 'puissance', 'couple', 'rendement'],
-          level: 'CAP',
-          subject: 'mathematiques'
-        },
-        {
-          id: '5',
-          title: 'Communication Client en Atelier',
-          category: 'francais',
-          content: 'Techniques de communication avec la clientèle. Rédaction de devis, explications techniques vulgarisées et gestion des réclamations.',
-          type: 'education',
-          difficulty_level: 2,
-          duration_minutes: 25,
-          views_count: 332,
-          rating: 4.4,
-          keywords: ['communication', 'client', 'devis', 'réclamation'],
-          level: 'BAC_PRO',
-          subject: 'francais'
-        },
-        {
-          id: '6',
-          title: 'Anglais Technique Automobile',
-          category: 'anglais',
-          content: 'Vocabulaire technique automobile en anglais. Documentation constructeur, codes défauts internationaux et communication technique.',
-          type: 'education',
-          difficulty_level: 3,
-          duration_minutes: 40,
-          views_count: 278,
-          rating: 4.2,
-          keywords: ['anglais', 'technique', 'vocabulaire', 'documentation'],
-          level: 'BTS',
-          subject: 'anglais'
-        }
-      ];
-
-      // Filtrer selon les critères sélectionnés
-      let filteredItems = [...mockAutomotiveData, ...mockEducationData];
+      // Combiner et filtrer selon les critères sélectionnés
+      let filteredItems = [...automotiveItems, ...educationItems];
 
       if (selectedType !== 'all') {
         filteredItems = filteredItems.filter(item => item.type === selectedType);
@@ -186,7 +131,21 @@ const KnowledgeBase = () => {
       setKnowledgeItems(filteredItems);
     } catch (error) {
       console.error('Erreur chargement base de connaissances:', error);
-      setKnowledgeItems([]);
+      // En cas d'erreur, utiliser des données de démonstration
+      const fallbackData: KnowledgeItem[] = [
+        {
+          id: 'demo-1',
+          title: 'Configuration Supabase Requise',
+          category: 'all',
+          content: 'Pour accéder à la base de connaissances complète, veuillez configurer Supabase en cliquant sur le bouton "Connect to Supabase" dans les paramètres.',
+          type: 'automotive',
+          difficulty_level: 1,
+          views_count: 0,
+          rating: 5.0,
+          keywords: ['configuration', 'supabase']
+        }
+      ];
+      setKnowledgeItems(fallbackData);
     } finally {
       setLoading(false);
     }
@@ -357,7 +316,7 @@ const KnowledgeBase = () => {
         {/* Results */}
         <div className="mb-6">
           <p className="text-slate-600">
-            {loading ? 'Recherche en cours...' : `${knowledgeItems.length} résultat${knowledgeItems.length > 1 ? 's' : ''} trouvé${knowledgeItems.length > 1 ? 's' : ''}`}
+            {loading ? 'Recherche dans la base de données...' : `${knowledgeItems.length} résultat${knowledgeItems.length > 1 ? 's' : ''} trouvé${knowledgeItems.length > 1 ? 's' : ''}`}
           </p>
         </div>
 

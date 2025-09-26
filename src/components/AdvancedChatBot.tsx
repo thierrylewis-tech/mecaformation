@@ -141,7 +141,7 @@ const AdvancedChatBot = () => {
       conversationHistory: [...prev.conversationHistory.slice(-5), userMessage]
     }));
 
-    // Recherche de codes de diagnostic
+    // Recherche de codes de diagnostic dans la vraie base
     if (analysis.codes && analysis.codes.length > 0) {
       try {
         const code = analysis.codes[0];
@@ -150,7 +150,7 @@ const AdvancedChatBot = () => {
         if (diagnosticData) {
           return {
             id: Date.now().toString(),
-            text: `Code ${code} détecté ! 🔍\n\n**${diagnosticData.description}**\n\n**Symptômes typiques :**\n${diagnosticData.symptoms.map(s => `• ${s}`).join('\n')}\n\n**Causes possibles :**\n${diagnosticData.possible_causes.map(c => `• ${c}`).join('\n')}\n\n**Gravité :** ${diagnosticData.severity === 'critical' ? '🔴 Critique' : diagnosticData.severity === 'high' ? '🟠 Élevée' : diagnosticData.severity === 'medium' ? '🟡 Moyenne' : '🟢 Faible'}\n\n**Coût estimé :** ${diagnosticData.estimated_cost_euros}€`,
+            text: `Code ${code} détecté dans notre base ! 🔍\n\n**${diagnosticData.description}**\n\n**Symptômes typiques :**\n${diagnosticData.symptoms.map(s => `• ${s}`).join('\n')}\n\n**Causes possibles :**\n${diagnosticData.possible_causes.map(c => `• ${c}`).join('\n')}\n\n**Étapes de diagnostic :**\n${diagnosticData.diagnostic_steps.slice(0, 3).map((s, i) => `${i+1}. ${s}`).join('\n')}\n\n**Gravité :** ${diagnosticData.severity === 'critical' ? '🔴 Critique' : diagnosticData.severity === 'high' ? '🟠 Élevée' : diagnosticData.severity === 'medium' ? '🟡 Moyenne' : '🟢 Faible'}\n\n**Temps estimé :** ${diagnosticData.estimated_time_hours}h\n**Coût estimé :** ${diagnosticData.estimated_cost_euros}€`,
             isBot: true,
             timestamp: new Date(),
             category: 'Code Diagnostic',
@@ -161,13 +161,22 @@ const AdvancedChatBot = () => {
               title: `Procédure complète ${code}`
             }]
           };
+        } else {
+          return {
+            id: Date.now().toString(),
+            text: `Code ${code} non trouvé dans notre base actuelle. Cependant, je peux vous aider :\n\n🔍 **Codes P0XXX** : Moteur et transmission\n🔍 **Codes B0XXX** : Carrosserie et confort\n🔍 **Codes C0XXX** : Châssis et freinage\n🔍 **Codes U0XXX** : Réseau et communication\n\nPouvez-vous me donner plus de détails sur les symptômes ?`,
+            isBot: true,
+            timestamp: new Date(),
+            category: 'Code Diagnostic',
+            confidence: 60
+          };
         }
       } catch (error) {
         console.error('Erreur recherche code:', error);
       }
     }
 
-    // Recherche dans la base de connaissances automobile
+    // Recherche dans la vraie base de connaissances automobile
     if (analysis.intents.technical_question || analysis.intents.problem_solving) {
       try {
         const { data: automotiveData } = await searchAutomotiveKnowledge(userMessage);
@@ -176,11 +185,11 @@ const AdvancedChatBot = () => {
           const bestMatch = automotiveData[0];
           return {
             id: Date.now().toString(),
-            text: `J'ai trouvé des informations pertinentes ! 📚\n\n**${bestMatch.title}**\n\n${bestMatch.content.substring(0, 300)}...\n\n**Niveau de difficulté :** ${'⭐'.repeat(bestMatch.difficulty_level)}\n**Catégorie :** ${bestMatch.category.replace('_', ' ')}\n\nVoulez-vous que je vous donne plus de détails sur ce sujet ?`,
+            text: `Excellent ! J'ai trouvé des informations dans notre base technique ! 📚\n\n**${bestMatch.title}**\n\n${bestMatch.content.substring(0, 400)}...\n\n**Niveau de difficulté :** ${'⭐'.repeat(bestMatch.difficulty_level)}\n**Catégorie :** ${bestMatch.category.replace('_', ' ')}\n**Mots-clés :** ${bestMatch.keywords.join(', ')}\n\nVoulez-vous que je vous donne plus de détails ou d'autres articles sur ce sujet ?`,
             isBot: true,
             timestamp: new Date(),
             category: bestMatch.category,
-            confidence: 90,
+            confidence: 95,
             attachments: [{
               type: 'knowledge',
               data: bestMatch,
@@ -193,7 +202,7 @@ const AdvancedChatBot = () => {
       }
     }
 
-    // Recherche enseignement général
+    // Recherche dans la vraie base enseignement général
     if (analysis.intents.learning || analysis.intents.calculation) {
       try {
         const { data: educationData } = await searchGeneralEducation(userMessage);
@@ -202,11 +211,11 @@ const AdvancedChatBot = () => {
           const bestMatch = educationData[0];
           return {
             id: Date.now().toString(),
-            text: `Parfait ! J'ai du contenu d'enseignement général pour vous 📖\n\n**${bestMatch.title}**\n\n${bestMatch.content.substring(0, 250)}...\n\n**Matière :** ${bestMatch.subject}\n**Niveau :** ${bestMatch.level}\n**Durée :** ${bestMatch.duration_minutes} minutes\n\nSouhaitez-vous voir les exercices pratiques ?`,
+            text: `Parfait ! J'ai du contenu d'enseignement général dans notre base ! 📖\n\n**${bestMatch.title}**\n\n${bestMatch.content.substring(0, 350)}...\n\n**Matière :** ${bestMatch.subject}\n**Niveau :** ${bestMatch.level}\n**Durée :** ${bestMatch.duration_minutes} minutes\n**Obligatoire :** ${bestMatch.is_mandatory ? 'Oui' : 'Non'}\n\nSouhaitez-vous voir les exercices pratiques ou d'autres cours ?`,
             isBot: true,
             timestamp: new Date(),
             category: `${bestMatch.subject} - ${bestMatch.level}`,
-            confidence: 88,
+            confidence: 92,
             attachments: [{
               type: 'exercise',
               data: bestMatch,

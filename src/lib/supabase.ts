@@ -5,6 +5,54 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-a
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
+// Fonction pour vérifier la connexion à la base de données
+export const checkDatabaseConnection = async () => {
+  try {
+    const { data, error } = await supabase
+      .from('automotive_knowledge')
+      .select('count')
+      .limit(1);
+    
+    return { connected: !error, error };
+  } catch (error) {
+    return { connected: false, error };
+  }
+};
+
+// Fonction pour obtenir les statistiques de la base
+export const getDatabaseStats = async () => {
+  try {
+    const [
+      { count: automotiveCount },
+      { count: educationCount },
+      { count: diagnosticCount },
+      { count: modulesCount }
+    ] = await Promise.all([
+      supabase.from('automotive_knowledge').select('*', { count: 'exact', head: true }),
+      supabase.from('general_education').select('*', { count: 'exact', head: true }),
+      supabase.from('diagnostic_codes').select('*', { count: 'exact', head: true }),
+      supabase.from('learning_modules').select('*', { count: 'exact', head: true })
+    ]);
+
+    return {
+      automotive_articles: automotiveCount || 0,
+      education_courses: educationCount || 0,
+      diagnostic_codes: diagnosticCount || 0,
+      learning_modules: modulesCount || 0,
+      total: (automotiveCount || 0) + (educationCount || 0) + (diagnosticCount || 0) + (modulesCount || 0)
+    };
+  } catch (error) {
+    console.error('Erreur stats base:', error);
+    return {
+      automotive_articles: 0,
+      education_courses: 0,
+      diagnostic_codes: 0,
+      learning_modules: 0,
+      total: 0
+    };
+  }
+};
+
 // Types pour la base de données
 export interface VehicleSystem {
   id: string;
