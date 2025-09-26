@@ -259,7 +259,6 @@ const DatabaseStatus = () => {
                         <li>4. Suivez les instructions</li>
                       </ol>
                     </div>
-                    </p>
                   </div>
                 </div>
               ) : existingTables < totalTables ? (
@@ -294,7 +293,6 @@ const DatabaseStatus = () => {
                         <li>• Formations structurées</li>
                       </ul>
                     </div>
-                    </p>
                   </div>
                 </div>
               )}
