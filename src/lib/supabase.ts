@@ -5,6 +5,37 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-a
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
+export const getDatabaseStats = async () => {
+  try {
+    const [
+      automotiveResult,
+      educationResult,
+      diagnosticResult,
+      modulesResult
+    ] = await Promise.all([
+      supabase.from('automotive_knowledge').select('*', { count: 'exact', head: true }),
+      supabase.from('general_education').select('*', { count: 'exact', head: true }),
+      supabase.from('diagnostic_codes').select('*', { count: 'exact', head: true }),
+      supabase.from('learning_modules').select('*', { count: 'exact', head: true })
+    ]);
+
+    return {
+      automotive_articles: automotiveResult.count || 0,
+      education_courses: educationResult.count || 0,
+      diagnostic_codes: diagnosticResult.count || 0,
+      learning_modules: modulesResult.count || 0
+    };
+  } catch (error) {
+    console.error('Error fetching database stats:', error);
+    return {
+      automotive_articles: 0,
+      education_courses: 0,
+      diagnostic_codes: 0,
+      learning_modules: 0
+    };
+  }
+};
+
 // Fonction pour vérifier la connexion à la base de données
 export const checkDatabaseConnection = async () => {
   try {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Database, CheckCircle, AlertTriangle, RefreshCw, Eye, EyeOff } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import { supabase, getDatabaseStats } from '../lib/supabase';
 
 interface TableStatus {
   name: string;
