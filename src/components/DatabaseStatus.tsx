@@ -150,7 +150,7 @@ const DatabaseStatus = () => {
 
           <div className="p-6">
             {/* Summary */}
-            <div className="bg-slate-50 rounded-lg p-4 mb-6">
+            <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-lg p-4 mb-6 border border-blue-200">
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
                   <div className="text-2xl font-bold text-slate-800">{existingTables}/{totalTables}</div>
@@ -242,13 +242,24 @@ const DatabaseStatus = () => {
             <div className="mt-6 pt-6 border-t border-slate-200">
               {existingTables === 0 ? (
                 <div className="text-center">
-                  <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
+                  <div className="bg-gradient-to-r from-orange-50 to-red-50 border-2 border-orange-300 rounded-lg p-6 mb-4">
                     <AlertTriangle className="h-6 w-6 text-orange-600 mx-auto mb-2" />
-                    <p className="text-sm text-orange-800 font-medium">
-                      Aucune table détectée
+                    <p className="text-lg text-orange-800 font-bold mb-2">
+                      🚨 Configuration Supabase Requise
                     </p>
-                    <p className="text-xs text-orange-600 mt-1">
-                      Cliquez sur "Connect to Supabase" pour configurer la base de données
+                    <p className="text-sm text-orange-700 mb-4">
+                      Pour activer toutes les fonctionnalités (ChatBot IA, recherche, comptes utilisateur), 
+                      vous devez configurer Supabase.
+                    </p>
+                    <div className="bg-white rounded-lg p-4 border border-orange-200">
+                      <h4 className="font-bold text-orange-800 mb-2">📋 Étapes simples :</h4>
+                      <ol className="text-sm text-orange-700 space-y-1 text-left">
+                        <li>1. Cliquez sur ⚙️ <strong>Settings</strong> (en haut à droite)</li>
+                        <li>2. Sélectionnez <strong>"Supabase"</strong></li>
+                        <li>3. Cliquez <strong>"Connect to Supabase"</strong></li>
+                        <li>4. Suivez les instructions</li>
+                      </ol>
+                    </div>
                     </p>
                   </div>
                 </div>
@@ -266,13 +277,24 @@ const DatabaseStatus = () => {
                 </div>
               ) : (
                 <div className="text-center">
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                  <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-300 rounded-lg p-6 mb-4">
                     <CheckCircle className="h-6 w-6 text-green-600 mx-auto mb-2" />
-                    <p className="text-sm text-green-800 font-medium">
-                      Base de données opérationnelle
+                    <p className="text-lg text-green-800 font-bold mb-2">
+                      🎉 Base de Données Opérationnelle !
                     </p>
-                    <p className="text-xs text-green-600 mt-1">
-                      Toutes les tables sont présentes et fonctionnelles
+                    <p className="text-sm text-green-700 mb-4">
+                      Félicitations ! Votre base de données est configurée avec {totalRows.toLocaleString()} enregistrements.
+                    </p>
+                    <div className="bg-white rounded-lg p-4 border border-green-200">
+                      <h4 className="font-bold text-green-800 mb-2">✅ Fonctionnalités Activées :</h4>
+                      <ul className="text-sm text-green-700 space-y-1 text-left">
+                        <li>• ChatBot IA avec base de connaissances</li>
+                        <li>• Recherche intelligente (1000+ articles)</li>
+                        <li>• Comptes utilisateur sécurisés</li>
+                        <li>• Codes diagnostic réels (500+)</li>
+                        <li>• Formations structurées</li>
+                      </ul>
+                    </div>
                     </p>
                   </div>
                 </div>
