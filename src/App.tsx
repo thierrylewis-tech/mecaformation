@@ -21,6 +21,7 @@ import AdvancedChatBot from './components/AdvancedChatBot';
 import KnowledgeBase from './components/KnowledgeBase';
 import DatabaseStatus from './components/DatabaseStatus';
 import StudentDashboard from './components/dashboard/StudentDashboard';
+import StripeTestComponent from './components/payment/StripeTestComponent';
 import { useAuth } from './contexts/AuthContext';
 
 const AppContent = () => {
@@ -52,6 +53,11 @@ const AppContent = () => {
       <KnowledgeBase />
       <NewsSection />
       <ContactSection />
+      <div className="py-20 bg-slate-100">
+        <div className="container mx-auto px-4">
+          <StripeTestComponent />
+        </div>
+      </div>
       <Footer />
       <AdvancedChatBot />
       <VoiceRecorder />

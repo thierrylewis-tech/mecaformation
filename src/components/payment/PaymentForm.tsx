@@ -44,16 +44,31 @@ const PaymentFormContent: React.FC<PaymentFormProps> = ({ amount, description, o
         body: JSON.stringify({
           amount: amount * 100, // Convert to cents
           currency: 'eur',
-          description
+        description,
+        metadata: {
+          service_type: 'formation',
+          platform: 'mecaformation'
+        }
         }),
       });
 
+      if (!response.ok) {
+        throw new Error('Erreur création Payment Intent');
+      }
+
       const { clientSecret } = await response.json();
+
+      if (!clientSecret) {
+        throw new Error('Client secret manquant');
+      }
 
       // Confirm payment
       const { error: stripeError, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: cardElement,
+          billing_details: {
+            name: 'Client MécaFormation'
+          }
         }
       });
 
@@ -62,6 +77,9 @@ const PaymentFormContent: React.FC<PaymentFormProps> = ({ amount, description, o
         onError(stripeError.message || 'Erreur de paiement');
       } else if (paymentIntent?.status === 'succeeded') {
         onSuccess(paymentIntent);
+      } else {
+        setError('Paiement non confirmé');
+        onError('Paiement non confirmé');
       }
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Erreur de paiement';
@@ -92,11 +110,17 @@ const PaymentFormContent: React.FC<PaymentFormProps> = ({ amount, description, o
                 base: {
                   fontSize: '16px',
                   color: '#424770',
+                  fontFamily: 'system-ui, sans-serif',
+                  lineHeight: '24px',
                   '::placeholder': {
                     color: '#aab7c4',
                   },
                 },
+                invalid: {
+                  color: '#9e2146',
+                },
               },
+              hidePostalCode: false,
             }}
           />
         </div>
