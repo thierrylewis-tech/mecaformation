@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { stripePromise } from '../../utils/stripe';
-import { CreditCard, Lock, CheckCircle, AlertTriangle } from 'lucide-react';
+import { Lock, CheckCircle, AlertTriangle } from 'lucide-react';
 
 interface PaymentFormProps {
   amount: number;
@@ -35,10 +35,11 @@ const PaymentFormContent: React.FC<PaymentFormProps> = ({ amount, description, o
 
     try {
       // Create payment intent
-      const response = await fetch('/api/create-payment-intent', {
+      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/create-payment-intent`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
         },
         body: JSON.stringify({
           amount: amount * 100, // Convert to cents

@@ -23,16 +23,21 @@ export const checkDatabaseConnection = async () => {
 export const getDatabaseStats = async () => {
   try {
     const [
-      { count: automotiveCount },
-      { count: educationCount },
-      { count: diagnosticCount },
-      { count: modulesCount }
+      automotiveResult,
+      educationResult,
+      diagnosticResult,
+      modulesResult
     ] = await Promise.all([
       supabase.from('automotive_knowledge').select('*', { count: 'exact', head: true }),
       supabase.from('general_education').select('*', { count: 'exact', head: true }),
       supabase.from('diagnostic_codes').select('*', { count: 'exact', head: true }),
       supabase.from('learning_modules').select('*', { count: 'exact', head: true })
     ]);
+
+    const automotiveCount = automotiveResult.count;
+    const educationCount = educationResult.count;
+    const diagnosticCount = diagnosticResult.count;
+    const modulesCount = modulesResult.count;
 
     return {
       automotive_articles: automotiveCount || 0,
