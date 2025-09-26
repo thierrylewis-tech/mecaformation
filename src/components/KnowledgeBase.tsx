@@ -22,7 +22,7 @@ import {
   Users,
   TrendingUp
 } from 'lucide-react';
-import { supabase, AutomotiveKnowledge, GeneralEducation } from '../lib/supabase';
+import { supabase, AutomotiveKnowledge, GeneralEducation, searchAutomotiveKnowledge, searchGeneralEducation } from '../lib/supabase';
 
 interface KnowledgeItem {
   id: string;
