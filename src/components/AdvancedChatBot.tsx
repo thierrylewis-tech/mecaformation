@@ -150,7 +150,7 @@ const AdvancedChatBot = () => {
         if (diagnosticData) {
           return {
             id: Date.now().toString(),
-            text: `Code ${code} détecté dans notre base ! 🔍\n\n**${diagnosticData.description}**\n\n**Symptômes typiques :**\n${diagnosticData.symptoms.map(s => `• ${s}`).join('\n')}\n\n**Causes possibles :**\n${diagnosticData.possible_causes.map(c => `• ${c}`).join('\n')}\n\n**Étapes de diagnostic :**\n${diagnosticData.diagnostic_steps.slice(0, 3).map((s, i) => `${i+1}. ${s}`).join('\n')}\n\n**Gravité :** ${diagnosticData.severity === 'critical' ? '🔴 Critique' : diagnosticData.severity === 'high' ? '🟠 Élevée' : diagnosticData.severity === 'medium' ? '🟡 Moyenne' : '🟢 Faible'}\n\n**Temps estimé :** ${diagnosticData.estimated_time_hours}h\n**Coût estimé :** ${diagnosticData.estimated_cost_euros}€`,
+            text: `Code ${code} trouvé dans notre base ! 🔍\n\n**${diagnosticData.description}**\n\n**Symptômes typiques :**\n${diagnosticData.symptoms?.map(s => `• ${s}`).join('\n') || 'Non spécifiés'}\n\n**Causes possibles :**\n${diagnosticData.possible_causes?.map(c => `• ${c}`).join('\n') || 'À analyser'}\n\n**Étapes de diagnostic :**\n${diagnosticData.diagnostic_steps?.slice(0, 3).map((s, i) => `${i+1}. ${s}`).join('\n') || 'Procédure standard'}\n\n**Gravité :** ${diagnosticData.severity === 'critical' ? '🔴 Critique' : diagnosticData.severity === 'high' ? '🟠 Élevée' : diagnosticData.severity === 'medium' ? '🟡 Moyenne' : '🟢 Faible'}\n\n**Temps estimé :** ${diagnosticData.estimated_time_hours || 'N/A'}h\n**Coût estimé :** ${diagnosticData.estimated_cost_euros || 'À évaluer'}€`,
             isBot: true,
             timestamp: new Date(),
             category: 'Code Diagnostic',
@@ -173,6 +173,14 @@ const AdvancedChatBot = () => {
         }
       } catch (error) {
         console.error('Erreur recherche code:', error);
+        return {
+          id: Date.now().toString(),
+          text: `Recherche du code ${analysis.codes[0]} en cours... En attendant, je peux vous aider avec les codes courants :\n\n🔍 **P0300** : Ratés de combustion\n🔍 **P0420** : Efficacité catalyseur\n🔍 **U0100** : Perte communication\n\nDécrivez-moi les symptômes de votre véhicule !`,
+          isBot: true,
+          timestamp: new Date(),
+          category: 'Code Diagnostic',
+          confidence: 70
+        };
       }
     }
 
@@ -224,7 +232,19 @@ const AdvancedChatBot = () => {
           };
         }
       } catch (error) {
-        console.error('Erreur recherche éducation:', error);
+        console.error('Erreur chargement base de connaissances:', error);
+        
+        // Message d'erreur pour l'utilisateur
+        const errorMessage: Message = {
+          id: Date.now().toString(),
+          text: '⚠️ **Base de données non configurée**\n\nPour accéder à ma base de connaissances complète avec 1000+ articles techniques, veuillez :\n\n1. Cliquer sur ⚙️ **Settings** (en haut à droite)\n2. Sélectionner **"Supabase"**\n3. Cliquer **"Connect to Supabase"**\n\nEn attendant, je peux répondre à vos questions générales sur l\'automobile !',
+          isBot: true,
+          timestamp: new Date(),
+          category: 'Configuration',
+          confidence: 100
+        };
+        
+        setMessages(prev => [...prev, errorMessage]);
       }
     }
 

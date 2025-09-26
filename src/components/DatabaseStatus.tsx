@@ -29,7 +29,6 @@ const DatabaseStatus = () => {
 
   const loadDatabaseStats = async () => {
     try {
-      const { getDatabaseStats } = await import('../lib/supabase');
       const stats = await getDatabaseStats();
       setDbStats(stats);
     } catch (error) {
