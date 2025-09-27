@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, Star, Zap, Award, Users, Clock, Shield, Crown, CreditCard, Calendar } from 'lucide-react';
+import { Check, Star, Zap, Award, Users, Clock, Shield, Crown, CreditCard, Calendar, Settings } from 'lucide-react';
 import PaymentModal from '../payment/PaymentModal';
 import LoginModal from '../auth/LoginModal';
 import RegisterModal from '../auth/RegisterModal';
