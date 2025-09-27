@@ -99,7 +99,7 @@ const RemoteDiagnosticModule = () => {
       title: 'Diagnostic Mercedes Expert',
       description: 'Diagnostic spécialisé Mercedes-Benz par technicien certifié',
       duration: '45-60 min',
-      price: '89€',
+      price: '129€',
       features: [
         'Technicien certifié Mercedes-Benz',
         'Accès aux codes constructeur',
@@ -116,7 +116,7 @@ const RemoteDiagnosticModule = () => {
       title: 'Diagnostic Toutes Marques',
       description: 'Diagnostic universel pour tous véhicules',
       duration: '30-45 min',
-      price: '59€',
+      price: '79€',
       features: [
         'Compatible toutes marques',
         'Diagnostic OBD standard',
@@ -132,7 +132,7 @@ const RemoteDiagnosticModule = () => {
       title: 'Contrôle Préventif',
       description: 'Diagnostic préventif pour éviter les pannes',
       duration: '20-30 min',
-      price: '39€',
+      price: '49€',
       features: [
         'Analyse préventive complète',
         'Détection pannes futures',
@@ -148,7 +148,7 @@ const RemoteDiagnosticModule = () => {
       title: 'Diagnostic Urgence',
       description: 'Diagnostic immédiat pour panne critique',
       duration: '15-20 min',
-      price: '129€',
+      price: '189€',
       features: [
         'Intervention immédiate',
         'Technicien disponible 24h/7j',
@@ -158,6 +158,23 @@ const RemoteDiagnosticModule = () => {
       ],
       icon: '🚨',
       color: 'from-red-600 to-red-700'
+    },
+    {
+      id: 'electric-diagnostic',
+      title: 'Diagnostic Véhicules Électriques',
+      description: 'Diagnostic spécialisé BEV/PHEV par expert',
+      duration: '60-75 min',
+      price: '149€',
+      features: [
+        'Expert véhicules électriques certifié',
+        'Diagnostic haute tension sécurisé',
+        'Analyse batterie et BMS',
+        'Rapport spécialisé détaillé',
+        'Recommandations optimisation'
+      ],
+      icon: '⚡',
+      color: 'from-green-400 to-green-600',
+      isNew: true
     }
   ];
 

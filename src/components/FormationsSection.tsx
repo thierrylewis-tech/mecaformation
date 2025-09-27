@@ -190,7 +190,7 @@ const FormationsSection = () => {
       duration: "12 mois",
       level: "Accompagnement",
       students: "30 places",
-      price: "890€ (financement 0% possible)",
+      price: "990€ (financement 0% possible)",
       image: "https://images.pexels.com/photos/3807277/pexels-photo-3807277.jpeg?auto=compress&cs=tinysrgb&w=800",
       features: [
         "Accompagnement individualisé 24h/24",
@@ -207,7 +207,7 @@ const FormationsSection = () => {
       duration: "6 mois",
       level: "Professionnel",
       students: "Équipes complètes",
-      price: "1 490€/garage (jusqu'à 8 personnes)",
+      price: "1 890€/garage (jusqu'à 8 personnes)",
       image: "https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=800",
       features: [
         "Formation équipe complète incluse",
@@ -215,6 +215,42 @@ const FormationsSection = () => {
         "Audit et optimisation atelier",
         "Support technique permanent"
       ],
+      isPremium: true
+    },
+    {
+      id: 14,
+      title: "Expert Véhicules Électriques",
+      subtitle: "Certification Constructeur BEV",
+      duration: "12 mois",
+      level: "Expert",
+      students: "15 places",
+      price: "2 490€ (certification Tesla/Mercedes)",
+      image: "https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&cs=tinysrgb&w=800",
+      features: [
+        "Certification Tesla/Mercedes/BMW",
+        "Habilitation haute tension B2VL",
+        "Stage constructeur garanti",
+        "Salaire 3200€+ garanti"
+      ],
+      isNew: true,
+      isPremium: true
+    },
+    {
+      id: 15,
+      title: "Expert Véhicules Hydrogène",
+      subtitle: "Technologies FCEV Avancées",
+      duration: "12 mois", 
+      level: "Expert",
+      students: "8 places",
+      price: "3 490€ (marché émergent exclusif)",
+      image: "https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=800",
+      features: [
+        "Pile à combustible avancée",
+        "Partenariat Toyota/Hyundai",
+        "Laboratoire virtuel 3D",
+        "Salaire 3800€+ garanti"
+      ],
+      isNew: true,
       isPremium: true
     }
   ];

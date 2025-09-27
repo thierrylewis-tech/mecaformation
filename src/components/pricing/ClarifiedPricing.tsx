@@ -20,9 +20,9 @@ const ClarifiedPricing = () => {
       id: 'cap-monthly',
       name: 'Accès CAP',
       subtitle: 'Plateforme e-learning',
-      price: 13,
-      originalPrice: 57,
-      savings: 77,
+      price: 29,
+      originalPrice: 270,
+      savings: 89,
       icon: Award,
       color: 'from-green-500 to-green-600',
       features: [
@@ -42,9 +42,9 @@ const ClarifiedPricing = () => {
       id: 'bac-monthly',
       name: 'Accès BAC PRO',
       subtitle: 'Plateforme complète',
-      price: 15,
-      originalPrice: 67,
-      savings: 78,
+      price: 35,
+      originalPrice: 260,
+      savings: 87,
       icon: Users,
       color: 'from-blue-500 to-blue-600',
       popular: true,
@@ -62,20 +62,61 @@ const ClarifiedPricing = () => {
     },
     {
       id: 'premium-monthly',
-      name: 'Accès Premium',
-      subtitle: 'Toutes technologies',
-      price: 22,
-      originalPrice: 97,
-      savings: 77,
+      name: 'Premium Électrique',
+      subtitle: 'Technologies d\'avenir',
+      price: 49,
+      originalPrice: 640,
+      savings: 92,
       icon: Zap,
       color: 'from-orange-500 to-red-500',
       premium: true,
       features: [
-        'Accès complet : CAP + BAC + BTS',
-        'Toutes les spécialisations incluses',
-        'Diagnostic avancé',
+        'Véhicules électriques (BEV)',
+        'Véhicules hybrides (HEV/PHEV)',
+        'Systèmes de charge AC/DC',
+        'Diagnostic haute tension',
+        'Habilitation électrique incluse',
         'Technologies futures (électrique, hydrogène)',
         'Support WhatsApp 24h/7j'
+      ],
+      limitations: []
+    },
+    {
+      id: 'hydrogen-monthly',
+      name: 'Spécialisation Hydrogène',
+      subtitle: 'Pile à combustible',
+      price: 69,
+      originalPrice: 933,
+      savings: 93,
+      icon: Award,
+      color: 'from-cyan-500 to-blue-600',
+      premium: true,
+      features: [
+        'Technologie pile à combustible',
+        'Stockage hydrogène haute pression',
+        'Sécurité manipulation H2',
+        'Maintenance systèmes FCEV',
+        'Certification constructeur',
+        'Accès laboratoire virtuel'
+      ],
+      limitations: []
+    },
+    {
+      id: 'diagnostic-monthly',
+      name: 'Diagnostic Avancé',
+      subtitle: 'Toutes technologies',
+      price: 59,
+      originalPrice: 800,
+      savings: 93,
+      icon: Settings,
+      color: 'from-purple-500 to-purple-600',
+      features: [
+        'Diagnostic thermique/électrique/hybride',
+        'Oscilloscope et analyse signaux',
+        'Multiplexage CAN/LIN/FlexRay',
+        'Programmation calculateurs',
+        'Outils professionnels virtuels',
+        'Certification multi-constructeurs'
       ],
       limitations: []
     }
@@ -87,8 +128,8 @@ const ClarifiedPricing = () => {
       id: 'cap-complete',
       name: 'CAP MVA Complet',
       subtitle: 'Certification officielle',
-      price: 890,
-      monthlyPrice: 13,
+      price: 1290,
+      monthlyPrice: 29,
       duration: '24 mois',
       icon: Award,
       color: 'from-green-500 to-green-600',
@@ -106,8 +147,8 @@ const ClarifiedPricing = () => {
       id: 'coaching-primo',
       name: 'Coaching Primo-Arrivants',
       subtitle: 'Accompagnement total',
-      price: 890,
-      monthlyPrice: 74,
+      price: 990,
+      monthlyPrice: 83,
       duration: '12 mois',
       icon: Users,
       color: 'from-blue-500 to-blue-600',
@@ -125,8 +166,8 @@ const ClarifiedPricing = () => {
       id: 'coaching-garage',
       name: 'Coaching Garages Pro',
       subtitle: 'Formation équipe complète',
-      price: 1490,
-      monthlyPrice: 124,
+      price: 1890,
+      monthlyPrice: 158,
       duration: '12 mois',
       icon: Crown,
       color: 'from-purple-500 to-purple-600',
@@ -139,6 +180,43 @@ const ClarifiedPricing = () => {
         'ROI garanti',
         'Certification équipe'
       ]
+    },
+    {
+      id: 'electric-specialist',
+      name: 'Expert Véhicules Électriques',
+      subtitle: 'Certification constructeur',
+      price: 2490,
+      monthlyPrice: 208,
+      duration: '12 mois',
+      icon: Zap,
+      color: 'from-green-400 to-green-600',
+      features: [
+        'Certification Tesla/Mercedes/BMW',
+        'Habilitation haute tension B2VL',
+        'Diagnostic spécialisé BEV',
+        'Stage constructeur garanti',
+        'Salaire 3200€+ garanti',
+        'Placement prioritaire'
+      ]
+    },
+    {
+      id: 'hydrogen-expert',
+      name: 'Expert Véhicules Hydrogène',
+      subtitle: 'Technologies FCEV',
+      price: 3490,
+      monthlyPrice: 291,
+      duration: '12 mois',
+      icon: Award,
+      color: 'from-cyan-400 to-blue-600',
+      premium: true,
+      features: [
+        'Technologie pile à combustible',
+        'Sécurité hydrogène niveau expert',
+        'Partenariat Toyota/Hyundai',
+        'Laboratoire virtuel 3D',
+        'Salaire 3800€+ garanti',
+        'Marché émergent exclusif'
+      ]
     }
   ];
 
@@ -147,7 +225,7 @@ const ClarifiedPricing = () => {
       id: 'diagnostic-express',
       name: 'Diagnostic Express',
       description: 'Diagnostic automobile express',
-      price: 15,
+      price: 25,
       duration: '15 min',
       features: ['Diagnostic rapide', 'Rapport PDF', 'Support chat']
     },
@@ -155,7 +233,7 @@ const ClarifiedPricing = () => {
       id: 'diagnostic-complet',
       name: 'Diagnostic Complet',
       description: 'Diagnostic automobile complet',
-      price: 59,
+      price: 79,
       duration: '45 min',
       features: ['Diagnostic approfondi', 'Rapport détaillé', 'Recommandations', 'Support téléphonique']
     },
@@ -163,9 +241,41 @@ const ClarifiedPricing = () => {
       id: 'diagnostic-mercedes',
       name: 'Diagnostic Mercedes Expert',
       description: 'Diagnostic Mercedes par expert certifié',
-      price: 89,
+      price: 129,
       duration: '60 min',
       features: ['Expert Mercedes certifié', 'Accès codes constructeur', 'Diagnostic STAR', 'Garantie 30j']
+    },
+    {
+      id: 'diagnostic-electric',
+      name: 'Diagnostic Véhicules Électriques',
+      description: 'Diagnostic spécialisé BEV/PHEV',
+      price: 149,
+      duration: '75 min',
+      features: ['Expert électrique certifié', 'Diagnostic haute tension', 'Analyse batterie', 'Rapport spécialisé']
+    },
+    {
+      id: 'diagnostic-urgence',
+      name: 'Diagnostic Urgence 24/7',
+      description: 'Intervention immédiate',
+      price: 189,
+      duration: '30 min',
+      features: ['Disponible 24h/7j', 'Intervention <15min', 'Solution temporaire', 'Priorité absolue']
+    },
+    {
+      id: 'diagnostic-electric',
+      name: 'Diagnostic Véhicules Électriques',
+      description: 'Diagnostic spécialisé BEV/PHEV',
+      price: 149,
+      duration: '75 min',
+      features: ['Expert véhicules électriques', 'Diagnostic haute tension', 'Analyse batterie', 'Rapport spécialisé']
+    },
+    {
+      id: 'diagnostic-urgence',
+      name: 'Diagnostic Urgence 24/7',
+      description: 'Intervention immédiate toute marque',
+      price: 189,
+      duration: '30 min',
+      features: ['Disponible 24h/7j', 'Intervention <15min', 'Solution temporaire', 'Priorité absolue']
     }
   ];
 

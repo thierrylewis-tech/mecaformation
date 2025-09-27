@@ -38,7 +38,7 @@ const Hero = () => {
             <div className="space-y-3">
               {[
                 'Formation 100% à distance - Accessible partout en France',
-                'Accompagnement personnalisé 24h/7j par des experts certifiés',
+                'Prix révolutionnaires : 87-93% moins cher que la concurrence',
                 'Matériel professionnel dernière génération mis à disposition',
                 'Stages en entreprise garantis dans notre réseau de 500+ partenaires'
               ].map((feature, index) => (
