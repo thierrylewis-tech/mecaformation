@@ -54,29 +54,29 @@ const FormationsSection = () => {
     },
     {
       id: 4,
-      title: "Module Véhicules Électriques",
-      subtitle: "Spécialisation BEV & Technologies",
-      duration: "4 mois",
+      title: "La prévention des risques sur véhicules électriques et hybrides",
+      subtitle: "Habilitations B0L, BCL, B2L, B2VL",
+      duration: "2 jours",
       level: "Spécialisation",
       students: "20 places",
-      price: "À partir de 3 200€",
+      price: "950€ présentiel ou distanciel",
       image: "https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&cs=tinysrgb&w=800",
       features: [
-        "Batteries lithium-ion et gestion thermique",
-        "Moteurs électriques et onduleurs",
-        "Systèmes de charge AC/DC",
-        "Habilitation électrique B1VL/B2VL"
+        "Habilitations électriques B0L, BCL, B2L, B2VL",
+        "Prévention des risques haute tension",
+        "Sécurité intervention véhicules électriques",
+        "Formation présentiel ou à distance"
       ],
       isNew: true
     },
     {
       id: 5,
       title: "Module Véhicules Hybrides",
-      subtitle: "HEV, PHEV & Technologies Mixtes",
-      duration: "3 mois",
+      subtitle: "Technologies HEV & PHEV",
+      duration: "1 jour",
       level: "Spécialisation",
       students: "18 places",
-      price: "À partir de 2 800€",
+      price: "350€ présentiel / 150€ en ligne",
       image: "https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=800",
       features: [
         "Architectures hybrides série/parallèle",
@@ -89,10 +89,10 @@ const FormationsSection = () => {
       id: 6,
       title: "Module Véhicules Hydrogène",
       subtitle: "FCEV & Pile à Combustible",
-      duration: "2 mois",
+      duration: "1 jour",
       level: "Spécialisation",
       students: "12 places",
-      price: "À partir de 3 800€",
+      price: "150€ formation en ligne",
       image: "https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=800",
       features: [
         "Technologie pile à combustible",
