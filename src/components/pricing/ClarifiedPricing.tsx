@@ -144,19 +144,18 @@ const ClarifiedPricing = () => {
       id: 'coaching-primo',
       name: 'Coaching Primo-Arrivants',
       subtitle: 'Accompagnement total',
-      price: 990,
-      monthlyPrice: 83,
+      price: 150,
+      monthlyPrice: 13,
       duration: '12 mois',
       icon: Users,
       color: 'from-blue-500 to-blue-600',
       popular: true,
       features: [
-        'Accompagnement 24h/24',
+        'Accompagnement personnalisé',
         'Plateforme e-learning complète',
-        'Enseignement général intégré',
         'Aide insertion professionnelle',
-        'Financement 0% sur 12 mois',
-        'Support WhatsApp permanent'
+        'Support pédagogique inclus',
+        'Prix ultra-accessible'
       ]
     },
     {
